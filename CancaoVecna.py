@@ -2,12 +2,22 @@ import json
 import time
 
 
-# Função de leitura do arquivo txt linha a linha
+# Função de leitura de txt como JSON em vetor
+# Utilizar com o arquivo songs3JSONvector.txt
+def ler_vetor(nome):
+    with open(nome, 'rb') as arquivo:
+        return json.loads(arquivo.read())
+
+
+# Função de leitura de txt como JSON linha a linha
+# Utilizar com o arquivo songs3LineByLine.txt
 def ler_linha(nome):
     return [json.loads(line) for line in open(nome, 'rb')]
 
 
 # Função de carregamento do conteúdo do txt para um vetor
+# Caso utilizar o arquivo songs3JSONvector.txt, alterar
+# ler_linha por ler_vetor
 def carregar_arquivo(nome):
     vet = []
     for i in ler_linha(nome):
@@ -76,16 +86,16 @@ def counting_sort(vet_entrada, maior_valor):
 
     # Etapa 3 -> Calcula a posição do elemento com base
     # nos valores contidos em count_vet
-    vet_saida = [0] * len(vet_entrada) # encontra o valor do el atual
-    i = len(vet_entrada) - 1 # subtrai 1 do valor
-    while i >= 0: # realiza a operação com todos os elementos
+    vet_saida = [0] * len(vet_entrada)  # encontra o valor do el atual
+    i = len(vet_entrada) - 1  # subtrai 1 do valor
+    while i >= 0:  # realiza a operação com todos os elementos
         pos_atual = vet_entrada[i]
         count_vet[pos_atual.get('ordem')] -= 1
         pos_nova = count_vet[pos_atual.get('ordem')]
         vet_saida[pos_nova] = pos_atual
         i -= 1
 
-    return vet_saida # contém os elementos de vet_entrada ordenados
+    return vet_saida  # contém os elementos de vet_entrada ordenados
 
 
 # Função que reúne as infos de cada arquivo em um txt
@@ -133,5 +143,5 @@ if __name__ == '__main__':
     fim = time.time()
     print(
         '*                 > TEMPO DE EXECUÇÃO:', round(fim - inicio), 'SEGUNDOS <                *'
-        '\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *'
+                                                                       '\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *'
     )
