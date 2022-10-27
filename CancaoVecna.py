@@ -143,5 +143,5 @@ if __name__ == '__main__':
     fim = time.time()
     print(
         '*                 > TEMPO DE EXECUÇÃO:', round(fim - inicio), 'SEGUNDOS <                *'
-                                                                       '\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *'
+        '\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *'
     )
